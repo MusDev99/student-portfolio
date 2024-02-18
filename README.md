@@ -44,6 +44,24 @@ $ npm run start:dev
 # production mode
 $ npm run start:prod
 ```
+## Add new Module/ Controller
+
+Under src/modules
+
+```bash
+# module
+$ nest generate module [module_name]
+# controller
+$ nest generate controller [module_name]
+# service
+$ nest generate service [module_name]
+
+or 
+
+# scaffolding
+$ nest generate resource [module_name]
+
+```
 
 ## Test
 
