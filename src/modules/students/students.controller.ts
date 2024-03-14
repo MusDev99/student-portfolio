@@ -1,4 +1,4 @@
-import { Controller, Get, Post, Body, Put, Delete, Param } from '@nestjs/common';
+import { Controller, Get, Post, Body, Put, Delete, Param, Req } from '@nestjs/common';
 import { StudentsService } from './students.service';
 import { CreateStudentRequest } from 'src/dto/request/Student/CreateStudentRequest';
 import { UpdateStudentRequest } from 'src/dto/request/Student/UpdateStudentRequest';
@@ -9,17 +9,18 @@ export class StudentsController {
   constructor(private readonly studentsService: StudentsService) {}
 
   @Get()
-  findAll() {
+  findAll(@Req() request: Request) : any[] {
     return this.studentsService.findAll();
+
   }
 
   @Get(':id')
-  findOne(@Param('id') id: string) {
+  findOne(@Param('id') id: string) : boolean {
     return this.studentsService.findOne(+id); // Convert string ID to number
   }
 
   @Post()
-  create(@Body() CreateStudentRequest: CreateStudentRequest) {
+  create(@Body() CreateStudentRequest: CreateStudentRequest) : any {
     return this.studentsService.create(CreateStudentRequest);
   }
 
